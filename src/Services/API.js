@@ -1,6 +1,6 @@
 import { create } from 'apisauce';
 
-const createAPI = (baseURL = 'http://localhost:3001/') => {
+const createAPI = (baseURL = 'http://localhost:3000/') => {
   //  STEP 1: Create and configure an apisauce-based api object.
   const api = create({
     baseURL,    // base URL is read from the "constructor"

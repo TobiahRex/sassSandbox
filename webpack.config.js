@@ -11,7 +11,7 @@ const devConfig = {
   debug: true,
   entry: [
     'webpack-hot-middleware/client?reload=true',
-    './src/Styles/style.css',
+    './src/Styles/style.scss',
     './src/index.js',
   ],
   output: {
@@ -29,7 +29,7 @@ const devConfig = {
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.ProvidePlugin({
       $: "jquery",
-      jQuery: "jquery"
+      jQuery: "jquery",
     }),
     new webpack.DefinePlugin({
       'process.env': {
@@ -38,6 +38,9 @@ const devConfig = {
       },
     }),
   ],
+  resolve: {
+    extensions: ['', '.js', '.jsx'],
+  },
   module: {
     loaders: [
       {
@@ -47,8 +50,8 @@ const devConfig = {
         include: path.join(__dirname, 'src'),
       },
       {
-        test: /(\.css)$/,
-        loaders: ['style', 'css'],
+        test: /\.s[ac]ss$/,
+        loaders: ['style', 'css', 'sass'],
       },
       {
         test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
@@ -86,9 +89,6 @@ const devConfig = {
         loader: 'json-loader',
       },
     ],
-  },
-  resolve: {
-    extensions: ['', '.js', '.jsx'],
   },
 };
 

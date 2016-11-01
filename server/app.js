@@ -6,9 +6,11 @@ import path from 'path';
 import morgan from 'morgan';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
+import dotenv from 'dotenv';
 
-const PORT = process.env.PORT || 3001;
-const MONGO = process.env.MONGODB_URI || 'mongodb://localhost/template';
+dotenv.config({ silent: true });
+const PORT = process.env.PORT || 3000;
+const MONGO = process.env.MONGODB_URI || 'mongodb://localhost/sassSandbox';
 const BUILD = process.env.NODE_ENV || 'development';
 const app = express();
 const api = require('./api');
@@ -27,7 +29,6 @@ app.use((req, res, next) => {
 });
 
 if (BUILD === 'development') {
-  require('dotenv').load();
   process.env.DEV = 'development';
   const webpack = require('webpack');
   const hotMiddleware = require('webpack-hot-middleware');
